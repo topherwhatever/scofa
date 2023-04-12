@@ -1,0 +1,11 @@
+Package: scofa
+Title: SCOring FAcilitation (scofa) does just that, facilitates the routine operations of scoring written exams.
+Version: 0.0.0.9000
+Authors@R: 
+    person("Christopher", "Gallagher", , "cgallagher@osteopathic.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4986-2141"))
+Description: NOTICE: Package in alpha testing. It is being rebuilt from scratch to apply best practices in organization and documentation. The package scofa aims to implement almost all of the routine scoring steps for AOA written exams and act as a guide through the few manual steps that remain.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
