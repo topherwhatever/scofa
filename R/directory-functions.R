@@ -7,6 +7,7 @@
 #' @param copy_hobbes logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.
 #' @return (as side effect) a list of directory paths (paths_list) assigned to global environment
 #' @export
+#'
 #' @examples
 #' path_struc(pooled = TRUE, copy_hobbes = TRUE)# creates a pooled folder structure and copies files from Hobbes Original
 #' path_struc(pooled = FALSE, copy_hobbes = FALSE) # creates an unpooled folder structure and does not copy files from Hobbes Original

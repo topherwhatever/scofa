@@ -1,5 +1,3 @@
-##! helper functions
-
 #' returns the population standard deviation
 #'
 #' @param x a numeric vector
