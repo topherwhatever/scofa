@@ -1,0 +1,76 @@
+Building scofa
+================
+
+scofa <img src="man/figures/logo.png" align="right" height="30" />
+
+## Step 1 create
+
+``` r
+usethis::create_package(
+ path = path_home_r("Doing/scofa"),
+ open = TRUE,roxygen = TRUE, rstudio = TRUE)
+
+usethis::use_r("helpers")
+```
+
+Result: created helpers.R in the R subfolder
+
+Mostly, functions come from common workflow or are other functions with
+more relevant targeted defaults (add_lead is more readable, for example)
+defined functions:
+
+-   sd.p - round.up
+
+-   lst2global
+
+-   ColNums_AllMissing
+
+-   add_lead
+
+*Note: Naming conventions are mishmash, determine logic for the
+differences or change conventions to lowercase with underscores*
+
+``` r
+devtools::document()
+```
+
+run to create documentation: ℹ Updating scofa documentation ℹ Loading
+scofa Writing NAMESPACE Writing sd.p.Rd Writing round.up.Rd Writing
+lst2global.Rd Writing ColNums_AllMissing.Rd Writing add_lead.Rd
+
+``` r
+devtools::install() 
+```
+
+Running "C:/PROGRA1/R/R-421.2/bin/x64/Rcmd.exe" INSTALL"C:\Users\CGALLA~1\AppData\Local\Temp\RtmpSGvBIp/scofa_0.0.0.9000.tar.gz"–install-tests * installing to library 'C:/Users/cgallagher/packlib' * installing source package 'scofa' … ** using staged installation ** R ** byte-compile and prepare package for lazy loading ** help *** installing help indices ** building package indices ** testing if installed package can be loaded from temporary location ** testing if installed package can be loaded from final location ** testing if installed package keeps a record of temporary installation path * DONE (scofa)
+
+Attaching package: 'scofa'
+
+The following objects are masked from 'package:package':
+
+add_lead, ColNums_AllMissing, lst2global, sd.p
+
+installing the nascent package loads the functions and their
+documentation in the standard way.
+
+Overall package documentation is started using this step:
+
+``` r
+usethis::use_r("scofa-package.R") 
+
+devtools::document()
+```
+
+\##GIT GOT
+
+``` r
+usethis::use_git(message = "scofa not sofa")
+```
+
+``` r
+create_github_token()
+usethis::use_logo(path_home_r("Doing/local_scoring/AOCPMECR/BANNER_AOA.png"))
+usethis::use_git_protocol("https")
+usethis::git_sitrep()
+gitcreds::gitcreds_set()
+```
