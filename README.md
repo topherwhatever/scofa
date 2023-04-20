@@ -13,7 +13,7 @@ The goal of scofa is to …
 You can install the development version of scofa like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("topherwhatever/scofa")
 ```
 
 ## Example
