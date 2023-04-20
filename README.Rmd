@@ -25,16 +25,16 @@ The goal of scofa is to ...
 You can install the development version of scofa like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("topherwhatever/scofa")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to create the initial directory structure:
 
 ```{r example}
 library(scofa)
-## basic example code
+path_struc()
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

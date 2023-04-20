@@ -1,8 +1,8 @@
 #' Get early information about an exam using contextual information
 #'
-#' The function assumes a properly generated paths_list list and properly specified list of revised items in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.
+#' The function assumes a properly generated paths_list list and a list of revised items, which can be replaced with subsequent functions, in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.
 #'
-#' @param revised_items
+#' @param revised_items a list of revised items, which can be replaced with subsequent functions, in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.
 #'
 #' @return exam information in list form to be used in subsequent scoring functions
 #' @export

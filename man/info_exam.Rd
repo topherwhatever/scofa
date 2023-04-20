@@ -7,13 +7,13 @@
 info_exam(revised_items = list())
 }
 \arguments{
-\item{revised_items}{}
+\item{revised_items}{a list of revised items, which can be replaced with subsequent functions, in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.}
 }
 \value{
 exam information in list form to be used in subsequent scoring functions
 }
 \description{
-The function assumes a properly generated paths_list list and properly specified list of revised items in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.
+The function assumes a properly generated paths_list list and a list of revised items, which can be replaced with subsequent functions, in form list(ITEMID, ITEMID, ITEMID). Specifying the revised items in alternative list formats, vectors, or numeric with lead to issues at this stage of development.
 }
 \examples{
 info_exam()
