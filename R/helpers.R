@@ -72,19 +72,34 @@ ColNums_AllMissing <- function(df){ # helper function
   as.vector(which(colSums(is.na(df)) == nrow(df)))
 }
 
-#' Add leading zeros to a numeric vector
-#' This function takes a numeric vector x and an integer width as inputs and returns a character vector of the same length as x with each element padded with leading zeros to match the specified width
-#' @param x a numeric vector to be padded with leading zeros
-#' @param width width an integer specifying the number of digits to pad each element of x with, default is the maximum number of characters in x
+#' Add leading zeros to a vector or list
+#' This function pads a vector with leading zeros using \code{stringr::str_pad()}.
+#' @param x a list or vector of type string or numeric
+#' @param width An integer. The desired width, in number of characters, of the output. If not provided, it is set to the maximum number of characters/digits in \code{x}.
 #'
-#' @return a character vector of the same length as x with each element padded with leading zeros to match the specified width
+#' @return A vector of the same type as \code{x}, padded with leading zeros.
 #' @export
 #'
 #' @examples
 #' add_lead(c(1, 23, 456)) # returns c(“001”, “023”, “456”)
 #' add_lead(c(1, 23, 456), width = 4) # returns c(“0001”, “0023”, “0456”)
-add_lead <- function(x, width = max(nchar(x)))
-{
-  sprintf(paste0("%0", width, "i"), x)
-}
+#'
+#' @importFrom stringr str_pad
+#'
+#' @seealso \code{\link{str_pad}}
+add_lead <- function(x, width = NULL) {
+  listcheck = is.list(x)
+  # If width is not specified, set it to the maximum number of characters/digits in x
+  if (is.null(width)) {
+    width <- max(nchar(x))
+  }
 
+  # Pad with leading zeros using stringr::str_pad()
+  x <- stringr::str_pad(x, width = width, side = "left", pad = "0")
+
+  # If x is a list, return it as a list
+  if (listcheck) {
+    return(as.list(x))
+  }
+    return(x) # Otherwise, return x
+}

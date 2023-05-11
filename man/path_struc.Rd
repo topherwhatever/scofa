@@ -7,7 +7,7 @@
 path_struc(pooled = TRUE, copy_hobbes = TRUE)
 }
 \arguments{
-\item{pooled}{logical; if TRUE, create a pooled directory with subdirectories for data, keys, item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.}
+\item{pooled}{logical; if TRUE, create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.}
 
 \item{copy_hobbes}{logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.}
 }

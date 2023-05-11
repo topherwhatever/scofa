@@ -20,7 +20,6 @@ info_exam <- function(revised_items=list()){
                         "CODE = [**ERROR**: NOT 4 or 5 response options]{shading.color=}"))
   rfiles_path = paths_list[["data"]]
   pool_path = rfiles_path %>% stringr::str_sub(start = 1, end = -6L)
-  key_path = paths_list[["keys"]]
   info_list <<- tibble::lst(exam_code, nitms_form, noptions, codes,
                             rfiles_path, pool_path, key_path, revised_items)
 }

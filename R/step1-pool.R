@@ -11,8 +11,8 @@
 #' write_respdat(info_list = ilist, datname = "_RESP2.dat")
 write_respdat <- function(info_list = info_list, datname = "_RESP.dat"){
   i_l = info_list
-  i_l[["raw_dfs"]] = dir_ls(path = i_l[["rfiles_path"]],glob = glue("*{i_l[['exam_code']]}_RESP*"))
-  i_l[["scored_dfs"]] = dir_ls(path = i_l[["rfiles_path"]],glob = "*SCORED_RESP*")
+  i_l[["raw_dfs"]] = fs::dir_ls(path = i_l[["rfiles_path"]],glob = glue("*{i_l[['exam_code']]}_RESP*"))
+  i_l[["scored_dfs"]] = fs::dir_ls(path = i_l[["rfiles_path"]],glob = "*SCORED_RESP*")
   resp_path <- glue('{i_l[["pool_path"]]}/{i_l[["exam_code"]]}{datname}')
   # Read the data from the files using either read.fwf or read.table, depending on the file format
   raw_list <- purrr::map(i_l[["raw_dfs"]],

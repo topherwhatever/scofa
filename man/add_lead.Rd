@@ -2,24 +2,28 @@
 % Please edit documentation in R/helpers.R
 \name{add_lead}
 \alias{add_lead}
-\title{Add leading zeros to a numeric vector
-This function takes a numeric vector x and an integer width as inputs and returns a character vector of the same length as x with each element padded with leading zeros to match the specified width}
+\title{Add leading zeros to a vector or list
+This function pads a vector with leading zeros using \code{stringr::str_pad()}.}
 \usage{
-add_lead(x, width = max(nchar(x)))
+add_lead(x, width = NULL)
 }
 \arguments{
-\item{x}{a numeric vector to be padded with leading zeros}
+\item{x}{a list or vector of type string or numeric}
 
-\item{width}{width an integer specifying the number of digits to pad each element of x with, default is the maximum number of characters in x}
+\item{width}{An integer. The desired width, in number of characters, of the output. If not provided, it is set to the maximum number of characters/digits in \code{x}.}
 }
 \value{
-a character vector of the same length as x with each element padded with leading zeros to match the specified width
+A vector of the same type as \code{x}, padded with leading zeros.
 }
 \description{
-Add leading zeros to a numeric vector
-This function takes a numeric vector x and an integer width as inputs and returns a character vector of the same length as x with each element padded with leading zeros to match the specified width
+Add leading zeros to a vector or list
+This function pads a vector with leading zeros using \code{stringr::str_pad()}.
 }
 \examples{
 add_lead(c(1, 23, 456)) # returns c(“001”, “023”, “456”)
 add_lead(c(1, 23, 456), width = 4) # returns c(“0001”, “0023”, “0456”)
+
+}
+\seealso{
+\code{\link{str_pad}}
 }

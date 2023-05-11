@@ -4,3 +4,5 @@
 .httr-oauth
 .DS_Store
 data
+_scripts_*
+inst/doc
