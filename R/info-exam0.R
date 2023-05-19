@@ -19,7 +19,7 @@
 #' exam_info = info_exam_beta()
 #' }
 #' @export
-info_exam0 <- function(hobbes_in_wd = NULL ) {
+info_exam0 <- function(hobbes_in_wd = NULL) {
 
   # Find directory containing "obbes" in the name in the working directory
   hobbes = fs::dir_ls(fs::path_wd(),glob = "*obbes*",type = "directory")
@@ -60,7 +60,7 @@ info_exam0 <- function(hobbes_in_wd = NULL ) {
   exam_info = tibble::lst(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
 
   # Print a warning message
-  message(cli::cli_alert_warning(text = "dunno yet"))
+  message(cli_alert_warning(text = "dunno yet"))
 
   return(exam_info)
 }

@@ -4,7 +4,7 @@
 #' @param datname the end of the RESP.dat filename, defaulting to {exam_code}_RESP.dat
 #'
 #' @return as a side effect, writes the _RESP.dat file to un/pooled directory and ....
-#' @export
+#'
 #'
 #' @examples
 #' write_respdat()
