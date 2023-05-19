@@ -29,7 +29,7 @@ if(is.null(exam_info)){
   pl = ifelse(cohort_n <30, yes = "pooled", no = "unpooled")
 
   # If 'pooled' is TRUE
-  if (pooled == TRUE){
+  if (pl == TRUE){
 
     # Set the path for the 'pooled' directory
     WDP = fs::path_wd("pooled")

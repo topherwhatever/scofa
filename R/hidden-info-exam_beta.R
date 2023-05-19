@@ -28,7 +28,7 @@ info_exam_beta <- function(hobbes_in_wd = NULL ) {
   exam_code =  fs::path_file(fs::path_wd())
 
   # Display a red box with the exam code
-  box_red <- cli::boxx(exam_code, padding = 3, background_col = "bg_red")
+  #box_red <- cli::boxx(exam_code, padding = 3, background_col = "bg_red")
 
   # Read in the pre-scored data
   prescored <- fs::dir_ls(fs::path_wd("Hobbes Original"),
@@ -60,7 +60,7 @@ info_exam_beta <- function(hobbes_in_wd = NULL ) {
   exam_info = tibble::lst(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
 
   # Print a warning message
-  message(cli_alert_warning(text = "dunno yet"))
+  message("dunno yet")
 
   return(exam_info)
 }
