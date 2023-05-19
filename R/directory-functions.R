@@ -20,7 +20,7 @@ path_struc <- function(exam_info = NULL, copy_hobbes = TRUE){
 if(is.null(exam_info)){
   warning("use info_exam0() to determine initial N for pooling determination")
 }else{
-  lst2global(exam_info)
+  lst2global(x = exam_info, envir = rlang::current_env())
 }
 
   # Set the working directory path
