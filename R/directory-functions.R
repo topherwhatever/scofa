@@ -33,43 +33,43 @@ if(is.null(exam_info)){
   if (pl == "pooled"){
 
     # Set the path for the 'pooled' directory
-    WDP = fs::path_wd("pooled")
+    WD = fs::path_wd("pooled")
 
     # Define a list of subdirectories for the 'pooled' directory
     sub_paths <- rlang::list2(
-      d = "data",
-      ia = "item analysis",
-      u = "unequated",
-      e = "equated")
+      data = "data",
+      ia_path = "item analysis",
+      unequated = "unequated",
+      equated = "equated")
 
     # Create the 'pooled' directory and its subdirectories
-    fs::dir_create(WDP,sub_paths)
+    fs::dir_create(WD,sub_paths)
 
     # Create a list of full paths for each subdirectory
-    x <- fs::path(WDP, sub_paths) %>% as.list
+    x <- fs::path(WD, sub_paths) %>% as.list
 
     # If 'pooled' is FALSE
   }else{
 
     # Set the path for the 'unpooled' directory
-    WDU = fs::path_wd("unpooled")
+    WD = fs::path_wd("unpooled")
 
     # Define a list of subdirectories for the 'unpooled' directory
     sub_paths <- rlang::list2(
-      ia = "item analysis",
-      u = "unequated",
-      e = "equated")
+      ia_path = "item analysis",
+      unequated = "unequated",
+      equated = "equated")
 
     # Create the 'unpooled' directory and its subdirectories
-    fs::dir_create(WDU,sub_paths)
+    fs::dir_create(WD,sub_paths)
 
     # Create a list of full paths for each subdirectory
-    x <- fs::path(WDU, sub_paths) %>% as.list
+    x <- fs::path(WD, sub_paths) %>% as.list
   }
 
   # Assign the names of the subdirectories to the list of full paths
   names(x) <- sub_paths
-
+  exam_info = tibble::lst(exam_info,!!!x)
   # Assign the list of full paths to a global variable called 'paths_list'
   paths_list <<- x
 
@@ -104,7 +104,5 @@ if(is.null(exam_info)){
       glue::glue('Hobbes Original contents has not been copied into the {pl}/equated directory.')
     )
   }
-  exam_info = tibble::lst(exam_info,unlist(paths_list))
-
   return(exam_info)
 }

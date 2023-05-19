@@ -46,8 +46,9 @@ directory structure:
 
 ``` r
 
-scofa::path_struc(exam_info = exam_info, copy_hobbes = FALSE)
-#> Hobbes Original contents has not been copied into the pooled/equated directory.
+scofa::path_struc(exam_info = exam_info, copy_hobbes = TRUE)
+#> Contents from Hobbes Original have been copied into the pooled/equated directory.
+#> This function does not overwrite any files that may be in pooled/equated.
 fs::dir_tree(path = fs::path_wd(),recurse = 2)
 #> C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC
 #> ├── AOBFPOCC.Rproj
@@ -99,6 +100,27 @@ fs::dir_tree(path = fs::path_wd(),recurse = 2)
 #> ├── pooled
 #> │   ├── data
 #> │   ├── equated
+#> │   │   ├── Anchor_AOBFPOCC.anc
+#> │   │   ├── AOBFPOCC_names.csv
+#> │   │   ├── AOBFPOCC_RESP.dat
+#> │   │   ├── AOBFPOCC_Total.out
+#> │   │   ├── AOBFPOCC_Total.txt
+#> │   │   ├── Control_AOBFPOCC.txt
+#> │   │   ├── Delete_AOBFPOCC.rmv
+#> │   │   ├── Domain Key.csv
+#> │   │   ├── DomainLookup.csv
+#> │   │   ├── ExamTimeReport.csv
+#> │   │   ├── ITEMANALYSIS_Total.txt
+#> │   │   ├── ITEMS_Total.csv
+#> │   │   ├── ItemTimeReport.csv
+#> │   │   ├── NOPP.csv
+#> │   │   ├── OPP.csv
+#> │   │   ├── PERSONS_Total.csv
+#> │   │   ├── SCORED_RESP.csv
+#> │   │   ├── _AOBFPOCC_item_comments.csv
+#> │   │   ├── _AOBFPOCC_RUN.cmd
+#> │   │   ├── _ERRORLOG.txt
+#> │   │   └── _Survey
 #> │   ├── item analysis
 #> │   └── unequated
 #> ├── README.md
