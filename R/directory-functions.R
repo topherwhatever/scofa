@@ -22,7 +22,6 @@ if(is.null(exam_info)){
 }else{
   lst2global(exam_info)
 }
-  cohort_n = 27
   # Set the working directory path
   WD = fs::path_wd()
 

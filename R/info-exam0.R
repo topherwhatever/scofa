@@ -60,7 +60,7 @@ info_exam0 <- function(hobbes_in_wd = NULL ) {
   exam_info = tibble::lst(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
 
   # Print a warning message
-  message(cli_alert_warning(text = "dunno yet"))
+  message(cli::cli_alert_warning(text = "dunno yet"))
 
   return(exam_info)
 }
