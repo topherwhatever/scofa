@@ -13,41 +13,161 @@ The goal of scofa is to …
 You can install the development version of scofa like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("topherwhatever/scofa")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+``` r
+setwd("C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC")
+exam_code =  fs::path_wd()
+
+exam_info = scofa::info_exam_beta(hobbes_in_wd = TRUE)
+#> dunno yet
+print(exam_info)
+#> $exam_code
+#> [1] "AOBFPOCC"
+#> 
+#> $cohort_n
+#> [1] 27
+#> 
+#> $nitms_form
+#> [1] 200
+#> 
+#> $n_opts
+#> [1] 4
+#> 
+#> $codes
+#> [1] "CODES = ABCD-"
+```
+
+This is a basic example which shows you how to create the initial
+directory structure:
 
 ``` r
-library(scofa)
-## basic example code
+setwd("C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC")
+scofa::path_struc(exam_info = exam_info, copy_hobbes = FALSE)
+#> Hobbes Original contents has not been copied into the pooled/equated directory.
+fs::dir_tree(fs::path_wd(),recurse = TRUE)
+#> C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC
+#> ├── AOBFPOCC.Rproj
+#> ├── Hobbes Original
+#> │   ├── Anchor_AOBFPOCC.anc
+#> │   ├── AOBFPOCC_names.csv
+#> │   ├── AOBFPOCC_RESP.dat
+#> │   ├── AOBFPOCC_Total.out
+#> │   ├── AOBFPOCC_Total.txt
+#> │   ├── Control_AOBFPOCC.txt
+#> │   ├── Delete_AOBFPOCC.rmv
+#> │   ├── Domain Key.csv
+#> │   ├── DomainLookup.csv
+#> │   ├── ExamTimeReport.csv
+#> │   ├── ITEMANALYSIS_Total.txt
+#> │   ├── ITEMS_Total.csv
+#> │   ├── ItemTimeReport.csv
+#> │   ├── NOPP.csv
+#> │   ├── OPP.csv
+#> │   ├── PERSONS_Total.csv
+#> │   ├── SCORED_RESP.csv
+#> │   ├── _AOBFPOCC_item_comments.csv
+#> │   ├── _AOBFPOCC_RUN.cmd
+#> │   ├── _ERRORLOG.txt
+#> │   └── _Survey
+#> │       ├── AOBFPOCC APR 2023 MEDU Survey Results Report.docx
+#> │       ├── S1_data.csv
+#> │       ├── S1_Examination_Sources_Prep.png
+#> │       ├── S1_JournalList.csv
+#> │       ├── S1_OtherList.csv
+#> │       ├── S1_ReviewcourseList.csv
+#> │       ├── S1_TextbookList.csv
+#> │       ├── S2_data.csv
+#> │       ├── S2_How_far_in_advance_preparing.png
+#> │       ├── S3_data.csv
+#> │       ├── S3_Topics_Covered_Appropriate_For_Examination.png
+#> │       ├── S4_data.csv
+#> │       ├── S4_Questions_Adequately_Tested_Knowledge.png
+#> │       ├── S5_data.csv
+#> │       ├── S5_Questions_Relevant_Clinical_Practice.png
+#> │       ├── S6_data.csv
+#> │       ├── S6_Time_Alloted_Sufficient.png
+#> │       ├── S7_data.csv
+#> │       ├── S7_Remote_Proctored_Effectively_Delivered.png
+#> │       ├── S8_Open_Comment.csv
+#> │       ├── Summary.csv
+#> │       ├── Survey Question Reference.csv
+#> │       └── z_Logo.png
+#> ├── README.Rmd
+#> ├── summary_2022_techreport.docx
+#> ├── unpooled
+#> │   ├── equated
+#> │   ├── item analysis
+#> │   └── unequated
+#> ├── _historical_info.docx
+#> ├── _revision_tracker
+#> │   ├── AOBFPOCC_ED_RT_export_2023.xlsx
+#> │   ├── CSV_Report.csv
+#> │   └── REVISED_ITEM_DECISIONS.txt
+#> ├── _scripts
+#> │   ├── 01isolate_revised_items.R
+#> │   ├── 01pre-stage tests.R
+#> │   └── 0isolate_revised_items.R
+#> ├── _SOPs
+#> │   ├── Anchor_EXAMPLE.anc
+#> │   ├── cover.png
+#> │   ├── coverAOA.png
+#> │   ├── index.qmd
+#> │   ├── intro.qmd
+#> │   ├── preface.qmd
+#> │   ├── r4ss.scss
+#> │   ├── references.bib
+#> │   ├── _quarto.yml
+#> │   └── _SOPs.Rproj
+#> └── _SOPs_
+#>     ├── Anchor_EXAMPLE.anc
+#>     ├── cover.png
+#>     ├── coverAOA.png
+#>     ├── index.qmd
+#>     ├── intro.html
+#>     ├── intro.qmd
+#>     ├── intro_files
+#>     │   └── mediabag
+#>     ├── prepwork.qmd
+#>     ├── r4ss.scss
+#>     ├── references.bib
+#>     ├── _bookoutput
+#>     │   ├── index.html
+#>     │   ├── index_files
+#>     │   │   └── figure-html
+#>     │   │       └── mandelbrot-1.png
+#>     │   ├── intro.html
+#>     │   ├── preface.html
+#>     │   ├── search.json
+#>     │   ├── site_libs
+#>     │   │   ├── bootstrap
+#>     │   │   │   ├── bootstrap-icons.css
+#>     │   │   │   ├── bootstrap-icons.woff
+#>     │   │   │   ├── bootstrap.min.css
+#>     │   │   │   └── bootstrap.min.js
+#>     │   │   ├── clipboard
+#>     │   │   │   └── clipboard.min.js
+#>     │   │   ├── quarto-html
+#>     │   │   │   ├── anchor.min.js
+#>     │   │   │   ├── popper.min.js
+#>     │   │   │   ├── quarto-syntax-highlighting.css
+#>     │   │   │   ├── quarto.js
+#>     │   │   │   ├── tippy.css
+#>     │   │   │   └── tippy.umd.min.js
+#>     │   │   ├── quarto-nav
+#>     │   │   │   ├── headroom.min.js
+#>     │   │   │   └── quarto-nav.js
+#>     │   │   └── quarto-search
+#>     │   │       ├── autocomplete.umd.js
+#>     │   │       ├── fuse.min.js
+#>     │   │       └── quarto-search.js
+#>     │   └── test
+#>     ├── _quarto.yml
+#>     └── _SOPs_.Rproj
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
 You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
