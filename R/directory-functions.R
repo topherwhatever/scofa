@@ -3,7 +3,7 @@
 #' This function creates a directory structure for pooled or unpooled data
 #' and optionally copies the contents from Hobbes Original into the equated subdirectory.
 #'
-#' @param pooled logical; if TRUE, create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.
+#' @param exam_info = list generated from scofa::info_exam0();checks cohort n. create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.
 #' @param copy_hobbes logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.
 #' @return (as side effect) a list of directory paths (paths_list) assigned to global environment
 #' @export
@@ -16,13 +16,15 @@
 #' @importFrom fs path_wd dir_create path
 #' @importFrom rlang list2
 
-path_struc <- function(pooled = TRUE, copy_hobbes = TRUE){
-
+path_struc <- function(exam_info = NULL, copy_hobbes = TRUE){
+if(is.null(exam_info)){
+  warning("use info_exam0() to determine initial N for pooling determination")
+}
   # Set the working directory path
   WD = fs::path_wd()
 
   # Determine the folder name ('pooled' or 'unpooled') based on the 'pooled' argument
-  pl = ifelse(test = pooled, yes = "pooled", no = "unpooled")
+  pl = ifelse(exam_info$cohort_n <30, yes = "pooled", no = "unpooled")
 
   # If 'pooled' is TRUE
   if (pooled == TRUE){

@@ -4,10 +4,10 @@
 \alias{path_struc}
 \title{Create a directory structure for pooled or unpooled data}
 \usage{
-path_struc(pooled = TRUE, copy_hobbes = TRUE)
+path_struc(exam_info = NULL, copy_hobbes = TRUE)
 }
 \arguments{
-\item{pooled}{logical; if TRUE, create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.}
+\item{exam_info}{= list generated from scofa::info_exam0();checks cohort n. create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.}
 
 \item{copy_hobbes}{logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.}
 }

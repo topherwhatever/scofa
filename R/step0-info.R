@@ -10,7 +10,9 @@
 #' @examples
 #' info_exam()
 #' info_exam(list(984654, 243567))
-info_exam <- function(revised_items=list()){
+info_exam1 <- function(exam_infolist = exam_info, revised_items=NULL){
+  scofa::lst2global(exam_info)
+  nitms_form = testform_k
   exam_code =  fs::path_file(fs::path_wd())
   nitms_form = read.csv("Hobbes Original/Domain Key.csv") %>% nrow()
   noptions = read.csv("Hobbes Original/Domain Key.csv") %>%
@@ -19,7 +21,8 @@ info_exam <- function(revised_items=list()){
                  ifelse(noptions == 5, "CODES = ABCDE-",
                         "CODE = [**ERROR**: NOT 4 or 5 response options]{shading.color=}"))
   rfiles_path = paths_list[["data"]]
+  ioptions = LETTERS[1:noptions]
   pool_path = rfiles_path %>% stringr::str_sub(start = 1, end = -6L)
-  info_list <<- tibble::lst(exam_code, nitms_form, noptions, codes,
-                            rfiles_path, pool_path, key_path, revised_items)
+  exam_info <<- tibble::lst(cohort_n, exam_code, nitms_form, noptions,ioptions, codes,
+                            rfiles_path, pool_path, revised_items)
 }
