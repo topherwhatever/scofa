@@ -19,7 +19,7 @@
 #' exam_info = info_exam_beta()
 #' }
 #' @export
-info_exam0 <- function(hobbes_in_wd = NULL ) {
+info_exam_beta <- function(hobbes_in_wd = NULL ) {
 
   # Find directory containing "obbes" in the name in the working directory
   hobbes = fs::dir_ls(fs::path_wd(),glob = "*obbes*",type = "directory")

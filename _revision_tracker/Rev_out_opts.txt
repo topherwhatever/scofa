@@ -1,5 +1,0 @@
-x1 Rev_tracker Options:
-
-Selected historic file: C:/Users/cgallagher/Documents/Doing/local_scoring/AOBSSCCCE/_revision-tracker/AOBSSCCCE_ED_2022-03-24.xlsx
-
-Selected current exam file: C:/Users/cgallagher/Documents/Doing/local_scoring/AOBSSCCCE/_revision-tracker/AOBSSCCCE_ED_current.xlsx

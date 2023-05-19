@@ -60,6 +60,5 @@ END NAMES')
   message("This function is in development. {flextable} is loaded during function, which is not ideal.")
   return(print(ft))
 
-
 }
 

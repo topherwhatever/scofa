@@ -19,12 +19,15 @@
 path_struc <- function(exam_info = NULL, copy_hobbes = TRUE){
 if(is.null(exam_info)){
   warning("use info_exam0() to determine initial N for pooling determination")
+}else{
+  lst2global(exam_info)
 }
+  cohort_n = 27
   # Set the working directory path
   WD = fs::path_wd()
 
   # Determine the folder name ('pooled' or 'unpooled') based on the 'pooled' argument
-  pl = ifelse(exam_info$cohort_n <30, yes = "pooled", no = "unpooled")
+  pl = ifelse(cohort_n <30, yes = "pooled", no = "unpooled")
 
   # If 'pooled' is TRUE
   if (pooled == TRUE){
