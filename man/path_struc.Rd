@@ -12,7 +12,7 @@ path_struc(exam_info = NULL, copy_hobbes = TRUE)
 \item{copy_hobbes}{logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.}
 }
 \value{
-(as side effect) a list of directory paths (paths_list) assigned to global environment
+exam_info
 }
 \description{
 This function creates a directory structure for pooled or unpooled data

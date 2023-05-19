@@ -5,7 +5,7 @@
 #'
 #' @param exam_info = list generated from scofa::info_exam0();checks cohort n. create a pooled directory with subdirectories for data (scored responses, raw data, and keys) , item analysis, unequated and equated. If FALSE, create an unpooled directory with subdirectories for item analysis, unequated and equated.
 #' @param copy_hobbes logical; if TRUE, copy the files from Hobbes Original into the equated subdirectory of the pooled or unpooled directory. If FALSE, do not copy the files.
-#' @return (as side effect) a list of directory paths (paths_list) assigned to global environment
+#' @return exam_info
 #' @export
 #'
 #' @examples
@@ -22,6 +22,7 @@ if(is.null(exam_info)){
 }else{
   lst2global(exam_info)
 }
+
   # Set the working directory path
   WD = fs::path_wd()
 
@@ -103,4 +104,7 @@ if(is.null(exam_info)){
       glue::glue('Hobbes Original contents has not been copied into the {pl}/equated directory.')
     )
   }
+  exam_info = tibble::lst(exam_info,unlist(paths_list))
+
+  return(exam_info)
 }

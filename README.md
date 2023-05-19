@@ -19,7 +19,7 @@ devtools::install_github("topherwhatever/scofa")
 ## Example
 
 ``` r
-setwd("C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC")
+
 exam_code =  fs::path_wd()
 
 exam_info = scofa::info_exam_beta(hobbes_in_wd = TRUE)
@@ -45,10 +45,10 @@ This is a basic example which shows you how to create the initial
 directory structure:
 
 ``` r
-setwd("C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC")
+
 scofa::path_struc(exam_info = exam_info, copy_hobbes = FALSE)
 #> Hobbes Original contents has not been copied into the pooled/equated directory.
-fs::dir_tree(fs::path_wd(),recurse = TRUE)
+fs::dir_tree(path = fs::path_wd(),recurse = 2)
 #> C:/Users/cgallagher/Documents/Doing/local_scoring/AOBFPOCC
 #> ├── AOBFPOCC.Rproj
 #> ├── Hobbes Original
@@ -96,12 +96,14 @@ fs::dir_tree(fs::path_wd(),recurse = TRUE)
 #> │       ├── Summary.csv
 #> │       ├── Survey Question Reference.csv
 #> │       └── z_Logo.png
-#> ├── README.Rmd
-#> ├── summary_2022_techreport.docx
-#> ├── unpooled
+#> ├── pooled
+#> │   ├── data
 #> │   ├── equated
 #> │   ├── item analysis
 #> │   └── unequated
+#> ├── README.md
+#> ├── README.Rmd
+#> ├── summary_2022_techreport.docx
 #> ├── _historical_info.docx
 #> ├── _revision_tracker
 #> │   ├── AOBFPOCC_ED_RT_export_2023.xlsx
@@ -137,37 +139,11 @@ fs::dir_tree(fs::path_wd(),recurse = TRUE)
 #>     ├── _bookoutput
 #>     │   ├── index.html
 #>     │   ├── index_files
-#>     │   │   └── figure-html
-#>     │   │       └── mandelbrot-1.png
 #>     │   ├── intro.html
 #>     │   ├── preface.html
 #>     │   ├── search.json
 #>     │   ├── site_libs
-#>     │   │   ├── bootstrap
-#>     │   │   │   ├── bootstrap-icons.css
-#>     │   │   │   ├── bootstrap-icons.woff
-#>     │   │   │   ├── bootstrap.min.css
-#>     │   │   │   └── bootstrap.min.js
-#>     │   │   ├── clipboard
-#>     │   │   │   └── clipboard.min.js
-#>     │   │   ├── quarto-html
-#>     │   │   │   ├── anchor.min.js
-#>     │   │   │   ├── popper.min.js
-#>     │   │   │   ├── quarto-syntax-highlighting.css
-#>     │   │   │   ├── quarto.js
-#>     │   │   │   ├── tippy.css
-#>     │   │   │   └── tippy.umd.min.js
-#>     │   │   ├── quarto-nav
-#>     │   │   │   ├── headroom.min.js
-#>     │   │   │   └── quarto-nav.js
-#>     │   │   └── quarto-search
-#>     │   │       ├── autocomplete.umd.js
-#>     │   │       ├── fuse.min.js
-#>     │   │       └── quarto-search.js
 #>     │   └── test
 #>     ├── _quarto.yml
 #>     └── _SOPs_.Rproj
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
