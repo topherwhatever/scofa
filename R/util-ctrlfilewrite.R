@@ -11,18 +11,19 @@
 #'
 #' @examples
 #' ctrl_write(pooled = TRUE, info_list = info_list)
-ctrl_write <- function(pooled = TRUE, info_list = info_list, path = paths_list[["equated"]]){
-
+ctrl_write <- function(exam_info=exam_info, dir_ctrl = equated){
+  lst2global(x = exam_info, envir = rlang::current_env())
   K1 = stringr::str_c(Items_pool[["KEY"]],
-             collapse = "",sep = "")
-  ilist = stringr::str_c(Items_pool[["ID"]], collapse = fixed("\n"))
-  ctrl_file = stringr::str_glue("{pool_path}/Control_{exam_code}.txt",
-                       file = stringr::str_remove(paths_list[["data"]], pattern = "/data"))
+                      collapse = "",sep = "")
+  ilist = glue::glue_collapse(items_pool$ID,sep = "\n")
+  ctrl_file = glue::glue("{dir_ctrl}/Control_{exam_code}.txt")
+  yr = lubridate::year(lubridate::now())
 
-  card = stringr::str_glue(
-'Title = "Pooled {exam_code}"\nDATA = {exam_code}_RESP.dat
+
+  card = glue::glue(
+    'Title = "Pooled {yr} {exam_code} Written Exam"\nDATA = {exam_code}_RESP.dat
 ITEM1 = 8
-NI = {nitems}
+NI = {n_items_pool
 NAME1 = 1
 NAMLEN = 7
 {codes}
@@ -44,11 +45,11 @@ DFILE = Delete_{exam_code}.rmv
 END NAMES')
   table = card %>%
     stringr::str_split(pattern = "\n",
-              simplify = TRUE) %>% t %>%
+                       simplify = TRUE) %>% t %>%
     tibble::as_tibble_col(column_name = "     ")
-  library(flextable)
-  set_flextable_defaults(padding = 0.25,post_process_html = TRUE, line_spacing = 1,
-                         font.family = "Georgia", font.size = 12)
+  require(flextable)
+  set_flextable_defaults(table.layout = "autofit",padding = 0.25,post_process_html = TRUE, line_spacing = 1,
+                         font.family = "Consolas", font.size = 15)
   ft = table %>% flextable() %>% add_header_row(
     values = "[**Check Control Card for Errors**]{.underline color=red}") %>%
     font(fontname = "Arial", part = "body") %>%
@@ -57,8 +58,11 @@ END NAMES')
     fontsize(size = 16, part = "header") %>%
     ftExtra::colformat_md(part = "all",.sep = "")
   write(card,file = ctrl_file, sep = "")
-  message("This function is in development. {flextable} is loaded during function, which is not ideal.")
-  return(print(ft))
+  require(crayon)
+  warn <- magenta $ underline $ bgBlack
 
+  cat(warn("I hope this function makes it simpler to inspect the card before it's written and used."))
+  rstudioapi::showPrompt(title = "View card?",
+                         message = "View as html in RStudio before writing the file?",default = "Yes")
+  if("Yes")print(ft)
 }
-

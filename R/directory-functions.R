@@ -16,12 +16,12 @@
 #' @importFrom fs path_wd dir_create path
 #' @importFrom rlang list2
 
-path_struc <- function(exam_info = NULL, copy_hobbes = TRUE){
-if(is.null(exam_info)){
-  warning("use info_exam0() to determine initial N for pooling determination")
-}else{
-  lst2global(x = exam_info, envir = rlang::current_env())
-}
+path_struc2 <- function(exam_info = NULL, copy_hobbes = TRUE){
+  if(is.null(exam_info)){
+    warning("use info_exam0() to determine initial N for pooling determination")
+  }else{
+    lst2global(x = exam_info, envir = rlang::current_env())
+  }
 
   # Set the working directory path
   WD = fs::path_wd()
@@ -46,7 +46,7 @@ if(is.null(exam_info)){
     fs::dir_create(WD,sub_paths)
 
     # Create a list of full paths for each subdirectory
-    x <- fs::path(WD, sub_paths) %>% as.list
+    x = fs::path(WD, sub_paths) %>% map(list())
 
     # If 'pooled' is FALSE
   }else{
@@ -64,14 +64,12 @@ if(is.null(exam_info)){
     fs::dir_create(WD,sub_paths)
 
     # Create a list of full paths for each subdirectory
-    x <- fs::path(WD, sub_paths) %>% as.list
+    x = fs::path(WD, sub_paths) %>% map(list())
   }
 
   # Assign the names of the subdirectories to the list of full paths
   names(x) <- sub_paths
-  exam_info = tibble::lst(exam_info,!!!x)
-  # Assign the list of full paths to a global variable called 'paths_list'
-  paths_list <<- x
+  exam_info = c(exam_info, x)
 
   # If 'copy_hobbes' is TRUE
   if (copy_hobbes == TRUE){
@@ -106,3 +104,4 @@ if(is.null(exam_info)){
   }
   return(exam_info)
 }
+

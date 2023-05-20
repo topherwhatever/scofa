@@ -1,6 +1,6 @@
 Package: scofa
 Title: SCOring FAcilitation (scofa) does just that, facilitates the routine operations of scoring written exams.
-Version: 0.0.0.9000
+Version: 0.0.1.05
 Authors@R: 
     person("Christopher", "Gallagher", , "cgallagher@osteopathic.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4986-2141"))
@@ -13,7 +13,8 @@ URL: https://github.com/topherwhatever/scofa
 BugReports: https://github.com/topherwhatever/scofa/issues
 Imports: 
     magrittr,
-    tibble
+    tibble,
+    glue,
 Suggests: 
     knitr,
     rmarkdown,
