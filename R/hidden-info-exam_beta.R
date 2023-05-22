@@ -19,7 +19,25 @@
 #' exam_info = info_exam_beta()
 #' }
 #' @export
-info_exam_beta <- function(hobbes_in_wd = NULL ) {
+info_exam_beta <- function(create_exam_dir = TRUE) {
+  remote_dir = usethis::ui_code_block(copy = FALSE,.envir = rlang::current_env(),
+                         x = c("We'll be selecting the exam folder and copying it locally", "If you'd like to do a remote scoring, contact christopher.","After copying the exam_folder locally, We'll collect some information about the exam\n to facilitate the scoring process.")
+
+  dir1 = fs::path("Z:/Psychometrics/Scoring")
+if(fs::dir_exists(dir1))
+   dir1 = fs::path("N:/Psychometrics/Scoring")
+
+  if (isTRUE(create_exam_dir)) {
+    message("Let's choose the exam and copy it locally")
+    remote_dir = rstudioapi::selectFile(caption = "Choose exam root folder to create locally",label = "Choose.",path = )
+    local_dir = fs::dir_create(remote_dir,recurse = FALSE)
+    message("This is your new root, working directory")
+    fs::dir_create(fs::path_wd("_revision_tracker"),recurse = FALSE)
+
+    usethis::create_project(local_dir,rstudio = TRUE,open = FALSE)
+    invisible(setwd(localdir))
+    fs::fs::dir_ls(fs::path_wd())
+
 
   # Find directory containing "obbes" in the name in the working directory
   hobbes = fs::dir_ls(fs::path_wd(),glob = "*obbes*",type = "directory")
@@ -40,7 +58,7 @@ info_exam_beta <- function(hobbes_in_wd = NULL ) {
   cohort_n <- prescored %>% nrow()
 
   # Assign "pooled" if cohort size is less than 30, otherwise "unpooled"
-  ifelse(cohort_n < 30, "pooled", "unpooled")
+  ifelse(cohort_n < 30, "pooled" = TRUE, "unpooled" = FALSE)
 
   # Get the number of items per form (number of columns minus 1 in the pre-scored data)
   nitms_form <- prescored %>% ncol() - 1
@@ -53,14 +71,20 @@ info_exam_beta <- function(hobbes_in_wd = NULL ) {
   codes = paste0(collapse = "",c("CODES = ",LETTERS[1:n_opts],"-"))
   # Print a warning if there are more than 5 response options
   if(n_opts > 5){
-    cat(codes,"but I wouldn't trust it")
+    cat(codes,"used much later")
   }
 
   # Create a tibble named 'exam_info' with the extracted information
-  exam_info = tibble::lst(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
+  exam_info = tibble::lst(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes, analysis_file = remote_dir)
 
-  # Print a warning message
-  message("dunno yet")
+
 
   return(exam_info)
+  }else{
+  message("If your analysis folder is structered with hobbes in the main folder, choose the path to that folder.")
+    local_dir = rstudioapi::selectFile(caption = "Choose path to analysis folder (should be named == exam_code)",label = "choose",path = fs::path_home_r())
+    # Print a warning message
+    message("dunno now")
+    exam_info = rlang::list2(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
+  }
 }
