@@ -20,8 +20,7 @@
 #' }
 #' @export
 info_exam_beta <- function(create_exam_dir = TRUE) {
-  remote_dir = usethis::ui_code_block(copy = FALSE,.envir = rlang::current_env(),
-                         x = c("We'll be selecting the exam folder and copying it locally", "If you'd like to do a remote scoring, contact christopher.","After copying the exam_folder locally, We'll collect some information about the exam\n to facilitate the scoring process.")
+  remote_dir = usethis::ui_code_block(x = c("We'll be selecting the exam folder and copying it locally", "If you'd like to do a remote scoring, contact christopher.","After copying the exam_folder locally, We'll collect some information about the exam\n to facilitate the scoring process."),.envir = rlang::current_env(),copy = FALSE )
 
   dir1 = fs::path("Z:/Psychometrics/Scoring")
 if(fs::dir_exists(dir1))
@@ -87,4 +86,6 @@ if(fs::dir_exists(dir1))
     message("dunno now")
     exam_info = rlang::list2(exam_code = exam_code, cohort_n = cohort_n, nitms_form = nitms_form, n_opts = n_opts, codes = codes)
   }
+
+
 }
