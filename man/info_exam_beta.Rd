@@ -4,7 +4,7 @@
 \alias{info_exam_beta}
 \title{Initial Information Extraction for Present Exam}
 \usage{
-info_exam_beta(hobbes_in_wd = NULL)
+info_exam_beta(create_exam_dir = TRUE)
 }
 \arguments{
 \item{hobbes_in_wd}{A string specifying the directory in the working directory where the hobbes files are stored. Default is NULL.}

@@ -4,11 +4,7 @@
 \alias{ctrl_write}
 \title{Write and inspect control file}
 \usage{
-ctrl_write(
-  pooled = TRUE,
-  info_list = info_list,
-  path = paths_list[["equated"]]
-)
+ctrl_write(exam_info = exam_info, dir_ctrl = equated)
 }
 \arguments{
 \item{pooled}{Logical. Pooled control file differs from unpooled. TRUE writes the pooled version. Unpooled version yet to be implemented.}

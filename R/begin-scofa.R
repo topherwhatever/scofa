@@ -1,15 +1,18 @@
 ### NOTE: GET THE REST OF THIS FROM PERSONAL COMPUTER
 
-#' Title
+#' Starting an Analysis
 #'
-#' @param ...
+#' @param ,,, either empty for inserting the path to your exam folder, or if your exam folder is your working directoy, leave empty
 #'
-#' @return
+#' @return creates a directory set in your working directory and a list object with paths to important directories
 #' @export
 #'
 #' @examples
-begin_examcode_old <- function(...) {
+#' begin_examcode_providers("NONEXAM")
+begin_examcode_priorvers <- function(...) {
   require(fs)
+  exam_code = "string with exam_code"
+  rlang::used
   exam_code = fs::path_wd() %>% path_file()
   exam_code <<- exam_code
 }
